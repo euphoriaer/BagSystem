@@ -15,6 +15,25 @@ public class ItemOnDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private Color m_color;
     private Color m_colorDes;
 
+    private float desViewTime=0;
+    private bool starTime = false;
+    private void Update()
+    {
+        if (starTime==true)
+        {
+            desViewTime += Time.deltaTime;
+        }
+        else
+        {
+            desViewTime = 0;
+        }
+
+        if (desViewTime>0.8f)
+        {
+            MouseEnter();
+        }
+        
+    }
     private void Awake()
     {
         CanvenRoot = GameObject.Find("Canvas");
@@ -95,11 +114,12 @@ public class ItemOnDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+       
         Debug.Log("鼠标进入");
         desPanel = CanvenRoot.transform.Find("MyDesPanel").gameObject;
         Debug.Log("进入物体");
-        Invoke(nameof(MouseEnter), 0.5f);
-
+        starTime = true;
+        //Invoke(nameof(MouseEnter), 0.5f);
         //throw new System.NotImplementedException();
     }
 
@@ -107,7 +127,7 @@ public class ItemOnDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         Debug.Log("移动des面板");
         desPanel.SetActive(true);
-        desPanel.transform.position = new Vector2(Input.mousePosition.x + 100f, Input.mousePosition.y - 60f);//des面板偏移
+        desPanel.transform.position = new Vector2(Input.mousePosition.x + 120f, Input.mousePosition.y - 80f);//des面板偏移
 
         //desPanel.GetComponent<Image>().color = m_color;
         //des.color = m_colorDes;
@@ -120,6 +140,7 @@ public class ItemOnDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        starTime = false;
         desPanel = CanvenRoot.transform.Find("MyDesPanel").gameObject;
         Debug.Log("退出物体");
         desPanel.SetActive(false);

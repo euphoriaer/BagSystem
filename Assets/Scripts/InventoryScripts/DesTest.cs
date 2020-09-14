@@ -18,7 +18,7 @@ namespace Assets.Scripts.InventoryScripts
         public void Enter()
         {
             Debug.Log("进入物体");
-            Invoke(nameof(MouseEnter), 0.5f);
+            Invoke(nameof(MouseEnter), 0.3f);
         }
 
         private void MouseEnter()

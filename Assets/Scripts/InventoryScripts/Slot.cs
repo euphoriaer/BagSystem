@@ -39,9 +39,6 @@ public class Slot : MonoBehaviour
 
     public void ItemOnClickedScropt()
     {
-
-
-        Debug.Log("使用物品");
         InventoryManager.UpdateItemInfo(slotInfo);
     }
     public void SetupSlot(MyitemS item)
