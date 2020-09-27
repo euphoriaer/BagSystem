@@ -6,7 +6,7 @@ namespace Assets.Scripts.InventoryScripts
     public class MyItemOnworld : MonoBehaviour
     {
 
-        public MyItem mydata;
+        public MyItemJson mydata;
 
         public void Start()
         {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 
 [Serializable]
-public class MyItem{
+public class MyItemJson{
     public int id;
     public string name;
     public string des;

@@ -41,7 +41,7 @@ public class Slot : MonoBehaviour
     {
         InventoryManager.UpdateItemInfo(slotInfo);
     }
-    public void SetupSlot(MyitemS item)
+    public void SetupSlot(MyitemScript item)
     {
         if (item == null)
         {

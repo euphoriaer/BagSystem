@@ -5,6 +5,6 @@ using UnityEngine;
 [Serializable]
 public class MyBagData : MonoBehaviour
 {
-  public  List<MyItem> goods = new List<MyItem>();
+  public  List<MyItemJson> goods = new List<MyItemJson>();
 
 }

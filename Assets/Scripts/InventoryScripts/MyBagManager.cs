@@ -6,27 +6,29 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// 将Json数据与Scriptable联系起来
+/// </summary>
 public class MyBagManager : SingletnoAutoMono<MyBagManager>
 {
 
     public Inventory myBag;
     // public Slot slotPrefab;
 
-    public List<MyItem> myItems;//接收Json的数据
-    public List<MyitemS> myItemScript;//创建可以放入背包的物体，将Json的数据赋予物体
+    public List<MyItemJson> myItemJson;//接收Json的数据
+    public List<MyitemScript> myItemScript;//创建可以放入背包的物体，将Json的数据赋予物体
 
     public Image imageTest;
 
 
     public void ReadJsonData()
     {
-        myItems = JsonLoad();
-        Debug.Log(myItems[0].name);
-        if (myItems != null)
+        myItemJson = JsonLoad();
+        Debug.Log(myItemJson[0].name);
+        if (myItemJson != null)
         {
             Debug.Log("Json数据存在");
-            foreach (var item in myItems)
+            foreach (var item in myItemJson)
             {
                 myItemScript.Add(CreatScriptItem(item));//创建物体并根据Json修改参数
             }
@@ -44,11 +46,11 @@ public class MyBagManager : SingletnoAutoMono<MyBagManager>
         }
     }
     //将Json的值赋给新创建的MyitemS，然后放入item集合
-    public MyitemS CreatScriptItem(MyItem myItem)
+    private MyitemScript CreatScriptItem(MyItemJson myItem)
     {
 
 
-        MyitemS myitemS = new MyitemS();
+        MyitemScript myitemS = new MyitemScript();
         myitemS.id = myItem.id;
         myitemS.name = myItem.name;
         myitemS.des = myItem.des;
@@ -80,17 +82,18 @@ public class MyBagManager : SingletnoAutoMono<MyBagManager>
     }
     private void Start()
     {
-        List<MyItem> myItems = new List<MyItem>();
+        List<MyItemJson> myItems = new List<MyItemJson>();
         myItems=JsonLoad();
         Debug.Log(myItems[0].name);
     }
+    //存储Json数据
     public  void JsonSave()
     {
-        
+        //TODO
      
     }
-    //
-    public List<MyItem> JsonLoad()
+    //读取Json数据
+    public List<MyItemJson> JsonLoad()
     {
         string JsonLitLoad = File.ReadAllText("C:/Users/17641/Desktop" + "/MyItemData.txt");//可以使用try进行安全校验，读取Json字符串
 

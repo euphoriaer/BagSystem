@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class ArraryTest
 {
-    public MyItem[] MydatasArrary;
+    public MyItemJson[] MydatasArrary;
 }
 
 public class JsonTest : MonoBehaviour
@@ -16,8 +16,8 @@ public class JsonTest : MonoBehaviour
 
     private void Start()
     {
-        MyItem mydata2 = new MyItem();
-        MyItem mydata = new MyItem();
+        MyItemJson mydata2 = new MyItemJson();
+        MyItemJson mydata = new MyItemJson();
         mydata.id = 1;
         mydata.name = "nameTest";
         mydata.des = "测试";
@@ -31,10 +31,10 @@ public class JsonTest : MonoBehaviour
         mydata2.role = "All";
 
         ArraryTest arrary = new ArraryTest();
-        arrary.MydatasArrary = new MyItem[] { mydata, mydata2 };
+        arrary.MydatasArrary = new MyItemJson[] { mydata, mydata2 };
 
         MyBagData listTest = new MyBagData();
-        listTest.goods = new List<MyItem>();
+        listTest.goods = new List<MyItemJson>();
         listTest.goods.Add(mydata);
         listTest.goods.Add(mydata2);
 
